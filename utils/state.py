@@ -1,26 +1,17 @@
-from aiogram.dispatcher.filters.state import State, StatesGroup
+from aiogram.dispatcher.filters.state import StatesGroup, State
 
 
-class Passenger(StatesGroup):
-    count = State()
-    location = State()
-    phone = State()
-    check = State()
-
-class MAIL(StatesGroup):
-    location = State()
-    phone = State()
-
-class DRIVER(StatesGroup):
+class Register(StatesGroup):
     name = State()
     phone = State()
-
-
-
-
-
-
-
-
-
-
+    
+    
+class Product(StatesGroup):
+    category = State()
+    product_detail = State()
+    count = State()
+    
+    
+    
+class Delivery(StatesGroup):
+    location = State()

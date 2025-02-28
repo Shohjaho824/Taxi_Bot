@@ -1,72 +1,74 @@
 START = \
 """
-Assalomu alaykum 
+Assalomu alaykum!
 """
 
-PASSENGER_HANDLER = \
+NAME = \
 """
-Hurmatli mijoz yolovchilar sonini kriting
+Ismingizni kiriting!
 """
 
-LOCATION = \
-"""
-Qayerga bormoqchisiz!
-"""
 
 PHONE = \
 """
-ILTIMOS telefon raqamingizni yozib yuboring yoki pasatdagi telefon raqam yuborish tugmasini bosing
+Telefon raqamingizni kiriting!
 """
-MAIL_HANDLER = \
+
+SUCCESS = \
 """
-Qayerga yubormochisiz ?
+Bosh menyu.
 """
-    
-DRIVER_HANDLER = \
+
+CATEGORY = \
 """
-Ismingizni kiriting
-""" 
+Mahsulotni tanlang!
+"""
 
-def check(**kwargs):
-    passenger = ''
-
-    passenger += f"MA'LUMOT:\n"
-    passenger += f"yolovchi soni:{kwargs['count']}\n"
-    passenger += f"manzil:{kwargs['location']}\n"
-    passenger += f"telefon:{kwargs['phone']}\n"
-
-
-    return passenger
+def product_text(**kwargs):
+    product = ''
+    product += f"Mahsulot nomi: {kwargs['name']}\n\n"
+    product += f"Mahsulot narxi: {kwargs['price']}\n\n"
+    product += f"Mahsuot haqida fikirlar: {kwargs['description']}\n"
+    return product
 
 
-def send_gruop(**kwargs):
-    passenger = ''
+PRODUCT_SELECT = \
+"""
+Mahsulotni turini tanlang!
+"""
 
-    passenger += f"MA'LUMOT:\n"
-    passenger += f"yolovchi soni:{kwargs['count']}\n"
-    passenger += f"manzil:{kwargs['location']}\n"
-    passenger += f"telefon:{kwargs['phone']}\n"
-    passenger += f"username:{kwargs['username']}\n"
+PRODUCT_BASKET_SUCCESS = \
+"""
+Bu categoryda hech narsa yo'q.
+"""
 
+def cart_text(**kwargs):
+    cart = ""
 
-    return passenger
+    cart += "Mahsulotingiz:\n\n"
+    cart += f"📛Nomi: {kwargs['product_name']}\n\n"
+    cart += f"💲Narxi: {kwargs['product_price']}\n"
 
-def send_mail(**kwargs):
-    passenger = ''
-
-    passenger += f"MA'LUMOT:\n"
-    passenger += f"manzil:{kwargs['location']}\n"
-    passenger += f"telefon:{kwargs['phone']}\n"
-
-
-    return passenger
-
-def send_driver(**kwargs):
-    passenger = ''
-
-    passenger += f"MA'LUMOT:\n"
-    passenger += f"ism:{kwargs['name']}\n"
-    passenger += f"telefon:{kwargs['phone']}\n"
+    return cart
 
 
-    return passenger
+LOCATION = "Iltimos, manzilingizni yuboring."
+
+
+
+def user_product(**kwargs):
+    order = (
+        f"📩 Telegram: @{kwargs.get('username', 'Noma’lum')}\n"
+        f"👤 Ism: {kwargs.get('name', 'Noma’lum')}\n"
+        f"📞 Telefon: {kwargs.get('phone', 'Noma’lum')}\n"
+        f"📦 Mahsulot: {kwargs.get('product_name', 'Noma’lum')}\n"
+        f"💰 Narxi: {kwargs.get('price', 'Noma’lum')}\n"
+        f"🔢 Soni: {kwargs.get('count', 'Noma’lum')}\n"
+    )
+    return order
+
+
+SETTINGS_INFO = \
+"""
+Ma'lumotlarni o'zgartirish uchun quyidagi tugmalardan foydalanishingiz mumkin.
+"""

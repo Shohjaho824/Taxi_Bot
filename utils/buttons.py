@@ -1,116 +1,102 @@
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-from aiogram.types import ReplyKeyboardMarkup
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton,  InlineKeyboardMarkup
 
 
 
-MAIN_BACK = 'Ortga'
-
-
-PASSENGER = "Yolovchi🧑🏻"
-DRIVER = "Taksi bolish🚖"
-MAIL = "Pochta yuborish✉️"
-
-
-BASE_BACK = 'Ortga'
-
-
-
-
-START = ReplyKeyboardMarkup(
+PHONE = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text=MAIL)
-        ],
-        [
-            KeyboardButton(text=DRIVER),
-            KeyboardButton(text=PASSENGER),
+            KeyboardButton(text='Yuborish', request_contact=True)
         ]
     ],
-
-
     resize_keyboard=True
+)
 
+ORDER_TITLE = "📦 Buyurtma berish"
+CART = "🛒 Savat"
+CONTACT = "📞 Biz bilan aloqa"
+SETTINGS = "⚙️ Sozlamalar"
+
+MENU = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text=ORDER_TITLE),
+            KeyboardButton(text=CART)
+        ],
+        [
+            KeyboardButton(text=CONTACT),
+            KeyboardButton(text=SETTINGS)
+        ],
+    ],
+    resize_keyboard=True
 )
 
 
 
-ONE = '1️⃣ kishi'
-TWO = '2️⃣ kishi'
-THREE = '3️⃣ kishi'
-FOUR = '4️⃣ kishi'
+def category_button(categories):
+    keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
+    for category in categories:
+        button = KeyboardButton(text=category['name'])
+        keyboard.add(button)
+    return keyboard
 
 
-BACK = 'Ortga❌'
 
 COUNT = ReplyKeyboardMarkup(
     keyboard=[
-
         [
-            KeyboardButton(text=ONE),
-            KeyboardButton(text=TWO),
+            KeyboardButton(text='1'),
+            KeyboardButton(text='2'),
+            KeyboardButton(text='3'),
         ],
-
         [
-            KeyboardButton(text=THREE),
-            KeyboardButton(text=FOUR),
+            KeyboardButton(text='4'),
+            KeyboardButton(text='5'),
+            KeyboardButton(text='6'),
         ],
-
-    
         [
-            KeyboardButton(text=BASE_BACK),
+            KeyboardButton(text='7'),
+            KeyboardButton(text='8'),
+            KeyboardButton(text='9'),
+        ],
+        [
+            KeyboardButton(text='Ortga'),
+            KeyboardButton(text="/start")
         ]
-
     ],
+    resize_keyboard=True
+)
 
+def product_button(products):
+    keyboard = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+
+    for product in products:
+        button = (KeyboardButton(text=product['name']))
+        keyboard.add(button)
+
+    return keyboard
+
+
+
+BACK_TITLE = "🔙 Ortga"
+DELIVERY = "🚚 Yetkazib berish"
+
+USER_CART = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text=DELIVERY)],
+        [KeyboardButton(text=BACK_TITLE)]
+    ],
     resize_keyboard=True
 )
 
 
-
-B_T = 'Beshariq-Toshket📌'
-T_B = 'Toshkent-Beshariq📌'
 
 LOCATION = ReplyKeyboardMarkup(
-        keyboard=[
-            [
-                KeyboardButton(text=B_T),
-                KeyboardButton(text=T_B),
-            ],
-            [
-                KeyboardButton(text=BASE_BACK)
-            ]
-        ],
-        resize_keyboard=True
-)
-
-
-
-PHONE_NUMBER = 'Telefon raqam yuborish📞'
-
-
-PHONE = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text=PHONE_NUMBER, request_contact=True)
+            KeyboardButton(text="Manzilni yuborish", request_location=True)
         ],
         [
-            KeyboardButton(text=BASE_BACK)
-        ]
-    ],
-    resize_keyboard=True
-)
-
-CHECK = 'Tasdiqlash✅'
-CANCEL = 'Bekor qilish❌'
-
-
-SEND_GROUP = ReplyKeyboardMarkup(
-    keyboard=[
-        [
-            KeyboardButton(text=CHECK)
-        ],
-        [
-            KeyboardButton(text=CANCEL)
+            KeyboardButton(text='/start')
         ]
     ],
     resize_keyboard=True
@@ -118,57 +104,36 @@ SEND_GROUP = ReplyKeyboardMarkup(
 
 
 
+NAME_UPDATE = "Ismni o'zgartirish"
+PHONE_UPDATE = "Telefon raqamini yangilash"
 
-
-B_T = 'Beshariq-Toshket📌'
-T_B = 'Toshkent-Beshariq📌'
-
-LOCATION = ReplyKeyboardMarkup(
-        keyboard=[
-            [
-                KeyboardButton(text=B_T),
-                KeyboardButton(text=T_B),
-            ],
-            [
-                KeyboardButton(text=BASE_BACK)
-            ]
-        ],
-        resize_keyboard=True
-)
-
-
-PHONE_NUMBER = 'Telefon raqam yuborish☎️'
-
-
-PHONE = ReplyKeyboardMarkup(
+SETTINGS_INFO = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text=PHONE_NUMBER, request_contact=True)
+            KeyboardButton(text=NAME_UPDATE),
+            KeyboardButton(text=PHONE_UPDATE),
         ],
         [
-            KeyboardButton(text=BACK)
-        ]
-    ],
-    resize_keyboard=True
-)
-    
-
-NAME = ReplyKeyboardMarkup(
-    keyboard=[
-        [
-            KeyboardButton(text=BACK)
-        ]
+            KeyboardButton(text=BACK_TITLE)
+        ],
     ],
     resize_keyboard=True
 )
 
 
+NAME_UPDATE = "Ismni o'zgartirish"
+PHONE_UPDATE = "Telefon raqamini yangilash"
 
-
-
-
-
-
-
-
-
+SETTINGS_INFO = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text=NAME_UPDATE),
+            KeyboardButton(text=PHONE_UPDATE),
+        ],
+        [
+            KeyboardButton(text=BACK_TITLE),
+            KeyboardButton(text="/start")
+        ],
+    ],
+    resize_keyboard=True
+)

@@ -9,6 +9,6 @@ import handler
 
 async def on_startup(dp):
 
-    await bot.send_message(ADMIN_ID, 'bot ishga tushdi')
+    await bot.send_message(ADMIN_ID, 'Bot ishga tushdi')
 
 executor.start_polling(dp, on_startup=on_startup, skip_updates=False)
